@@ -13,6 +13,8 @@ class CourseController extends Controller
 
     public function show(Course $course) {
 
+        $this->authorize('published', $course);
+
         $alikes = Course::where('category_id', $course->category_id)
                                 ->where('id', '!=', $course->id)
                                 ->where('status', 3)
@@ -26,6 +28,6 @@ class CourseController extends Controller
     public function enrolled(Course $course) {
         $course->students()->attach(auth()->user()->id);
 
-        return redirect()->route('course.status', $course);
+        return redirect()->route('courses.status', $course);
     }
 }

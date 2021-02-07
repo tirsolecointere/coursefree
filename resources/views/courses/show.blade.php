@@ -84,9 +84,9 @@
                 <section class="card text-gray-700 mb-6 lg:mb-12">
                     <div class="card-body">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 mr-4">
+                            <figure class="flex-shrink-0 mr-4">
                                 <img class="h-12 w-12 object-cover rounded-full shadow" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
-                            </div>
+                            </figure>
                             <div>
                                 <h1 class="font-bold text-gray-500">Prof. {{ $course->teacher->name }}</h1>
                                 <a class="text-gray-400 text-sm" href="">{{ '@' . Str::slug($course->teacher->name, '') }}</a>
@@ -94,9 +94,9 @@
                         </div>
 
                         @can('enrolled', $course)
-                            <a href="{{ route('course.status', $course) }}" class="btn btn-blue btn-block mt-4">Continuar con el curso</a>
+                            <a href="{{ route('courses.status', $course) }}" class="btn btn-blue btn-block mt-4">Continuar con el curso</a>
                         @else
-                            <form action="{{ route('course.enrolled', $course) }}" method="POST">
+                            <form action="{{ route('courses.enrolled', $course) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-green btn-block mt-4">Llevar éste curso</button>
                             </form>
