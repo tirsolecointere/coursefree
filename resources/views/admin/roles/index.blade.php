@@ -35,7 +35,9 @@
                     @forelse ($roles as $role)
                     <tr>
                         <td scope="row">{{ $role->id }}</td>
-                        <td>{{ $role->name }}</td>
+                        <td>
+                            <a href="{{ route('admin.roles.edit', $role) }}">{{ $role->name }}</a>
+                        </td>
                         <td width="1rem">
                             <a class="btn btn-secondary btn-sm" href="{{ route('admin.roles.edit', $role) }}">Editar</a>
                         </td>
