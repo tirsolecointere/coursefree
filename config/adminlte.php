@@ -235,14 +235,21 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Dashboard',
+            'text'          => 'Dashboard',
             'route'         => 'admin.home',
-            'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'icon'          => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text'        => 'Roles',
+            'text'          => 'Roles',
             'route'         => 'admin.roles.index',
-            'icon'        => 'fas fa-fw fa-user-cog',
+            'icon'          => 'fas fa-fw fa-user-cog',
+            'active'        =>  ['admin/roles*'],
+        ],
+        [
+            'text'          => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'          => 'fas fa-fw fa-user',
+            'active'        =>  ['admin/users*'],
         ],
         // ['header' => 'account_settings'],
         // [
@@ -411,5 +418,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/9.-Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
