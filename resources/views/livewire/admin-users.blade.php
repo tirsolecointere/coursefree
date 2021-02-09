@@ -1,10 +1,7 @@
 <div>
     <div class="card">
-        <div class="card-header d-flex align-items-center">
-            <div class="flex-nowrap mr-3">
-                <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Crear usuario</a>
-            </div>
-            <div class="flex-grow-1 position-relative">
+        <div class="card-header">
+            <div class="position-relative">
                 <input wire:model="search" wire:keydown="resetPage" type="text" class="form-control" placeholder="Buscar...">
                 <div class="position-absolute" wire:loading.delay style="right: .5rem; top: .25rem;">
                     <div class="spinner-border spinner-border-sm text-muted" role="status">
@@ -27,7 +24,9 @@
                     @forelse ($users as $user)
                     <tr>
                         <td scope="row">{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
+                        <td>
+                            <a href="{{ route('admin.users.edit', $user) }}">{{ $user->name }}</a>
+                        </td>
                         <td>{{ $user->email }}</td>
                         <td width="1rem">
                             <a class="btn btn-secondary btn-sm" href="{{ route('admin.users.edit', $user) }}">Editar</a>
