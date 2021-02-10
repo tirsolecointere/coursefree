@@ -32737,6 +32737,27 @@ select {
   border: 0;
 }
 
+.form-input {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+  border-radius: 0.5rem;
+  border-width: 2px;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-right: 4rem;
+  width: 100%
+}
+
+.form-input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px
+}
+
 .btn {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
