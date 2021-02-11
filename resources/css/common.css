@@ -3,7 +3,7 @@
 }
 
 .card {
-    @apply bg-white shadow-sm rounded-lg overflow-hidden;
+    @apply bg-white shadow-sm rounded-lg text-gray-600;
 }
 .card-body {
     @apply px-6 py-4;
@@ -38,8 +38,23 @@
 }
 
 .form-input {
-    @apply w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm
+    @apply w-full border border-gray-300 bg-white py-2 px-3 rounded-lg text-sm;
 }
 .form-input:focus {
-    @apply outline-none
+    @apply outline-none ring-2 ring-blue-100 border-blue-400;
+}
+
+.form-input[readonly] {
+    @apply bg-gray-50 border-gray-200;
+}
+.form-input[readonly]:focus {
+    @apply ring-gray-50;
+}
+
+/* invalid input state */
+.form-input.invalid {
+    @apply border-red-500;
+}
+.form-input.invalid:focus {
+    @apply ring-red-100;
 }

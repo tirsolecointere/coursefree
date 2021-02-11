@@ -1,11 +1,11 @@
 .btn {
-    @apply inline-block text-center text-sm bg-gray-200 text-gray-500 font-bold py-2 px-4 rounded-lg;
+    @apply inline-block text-center text-sm bg-gray-200 text-gray-500 font-bold py-2 px-4 rounded-lg cursor-pointer;
 }
 .btn:hover {
     @apply hover:bg-gray-300;
 }
 .btn:focus {
-    @apply focus:outline-none;
+    @apply focus:outline-none focus:ring-2 focus:ring-gray-300;
 }
 
 .btn-blue {
@@ -14,12 +14,18 @@
 .btn-blue:hover {
     @apply hover:bg-blue-700;
 }
+.btn-blue:focus {
+    @apply focus:ring-blue-200;
+}
 
 .btn-red {
     @apply bg-red-500 text-white;
 }
 .btn-red:hover {
     @apply hover:bg-red-700;
+}
+.btn-red:focus {
+    @apply focus:ring-red-200;
 }
 
 .btn-green {
@@ -28,7 +34,10 @@
 .btn-green:hover {
     @apply hover:bg-green-700;
 }
+.btn-green:focus {
+    @apply focus:ring-green-200;
+}
 
 .btn-block {
-    @apply block w-full
+    @apply block w-full;
 }

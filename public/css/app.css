@@ -32687,9 +32687,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   border-radius: 0.5rem;
-  overflow: hidden;
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-text-opacity: 1;
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
 .card-body {
@@ -32743,25 +32744,57 @@ select {
   --tw-border-opacity: 1;
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
   border-radius: 0.5rem;
-  border-width: 2px;
-  height: 2.5rem;
+  border-width: 1px;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-right: 4rem;
-  width: 100%
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 100%;
 }
 
 .form-input:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(96, 165, 250, var(--tw-border-opacity));
   outline: 2px solid transparent;
-  outline-offset: 2px
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(219, 234, 254, var(--tw-ring-opacity));
+}
+
+.form-input[readonly] {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+}
+
+.form-input[readonly]:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(249, 250, 251, var(--tw-ring-opacity));
+}
+
+/* invalid input state */
+
+.form-input.invalid {
+  --tw-border-opacity: 1;
+  border-color: rgba(239, 68, 68, var(--tw-border-opacity));
+}
+
+.form-input.invalid:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(254, 226, 226, var(--tw-ring-opacity));
 }
 
 .btn {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   border-radius: 0.5rem;
+  cursor: pointer;
   display: inline-block;
   font-weight: 700;
   font-size: 0.875rem;
@@ -32783,6 +32816,11 @@ select {
 .btn:focus:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(209, 213, 219, var(--tw-ring-opacity));
 }
 
 .btn-blue {
@@ -32797,6 +32835,11 @@ select {
   background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
 }
 
+.btn-blue:focus:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(191, 219, 254, var(--tw-ring-opacity));
+}
+
 .btn-red {
   --tw-bg-opacity: 1;
   background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
@@ -32807,6 +32850,11 @@ select {
 .btn-red:hover:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+}
+
+.btn-red:focus:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(254, 202, 202, var(--tw-ring-opacity));
 }
 
 .btn-green {
@@ -32821,9 +32869,14 @@ select {
   background-color: rgba(4, 120, 87, var(--tw-bg-opacity));
 }
 
+.btn-green:focus:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(167, 243, 208, var(--tw-ring-opacity));
+}
+
 .btn-block {
   display: block;
-  width: 100%
+  width: 100%;
 }
 
 @media (min-width: 640px) {

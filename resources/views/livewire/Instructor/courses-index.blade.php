@@ -1,8 +1,11 @@
 <div class="container py-12">
     <x-table-responsive>
 
-        <div class="px-6 py-4">
-            <input wire:model="search" wire:keydown="resetPage" type="text" class="form-input w-full shadow-sm" placeholder="Buscar...">
+        <div class="flex items-center px-6 py-4">
+            <div class="flex-shrink-0 mr-3">
+                <a href="{{ route('instructor.courses.create') }}" class="btn btn-blue">Crear nuevo curso</a>
+            </div>
+            <input wire:model="search" wire:keydown="resetPage" type="text" class="form-input flex-1 shadow-sm" placeholder="Buscar...">
         </div>
 
         <table class="min-w-full divide-y divide-gray-200">
@@ -23,10 +26,16 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10">
-                                <img class="h-10 w-10 rounded-full" src="{{ Storage::url($course->image->url) }}" alt="">
+                                @isset($course->image)
+                                    <img class="h-10 w-10 rounded-full" src="{{ Storage::url($course->image->url) }}">
+                                    @else
+                                    <img class="h-10 w-10 rounded-full" src="{{ asset('img/courses/placeholder-course-image.png') }}">
+                                @endisset
                             </div>
                             <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">{{ Str::limit($course->title, 40) }}</div>
+                                <div class="text-sm font-medium text-gray-900">
+                                    <a class="text-indigo-600 hover:text-indigo-900" href="{{ route('instructor.courses.edit', $course) }}">{{ Str::limit($course->title, 40) }}</a>
+                                </div>
                                 <div class="text-sm text-gray-500">{{ $course->category->name }}</div>
                             </div>
                         </div>
@@ -91,7 +100,7 @@
                         @endswitch
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <a href="{{ route('instructor.courses.edit', $course) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                     </td>
                 </tr>
                 @empty

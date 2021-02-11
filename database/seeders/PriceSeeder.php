@@ -28,7 +28,7 @@ class PriceSeeder extends Seeder
             'value' => 49.99
         ]);
         Price::create([
-            'name' => '99.99 US$ (nivel 2)',
+            'name' => '99.99 US$ (nivel 3)',
             'value' => 99
         ]);
     }
