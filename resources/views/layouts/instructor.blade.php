@@ -25,7 +25,7 @@
             @livewire('navigation-menu')
 
             <!-- Page Content -->
-            <div class="container py-12 grid grid-cols-5 gap-8">
+            <div class="container py-12 grid md:grid-cols-5 md:gap-8">
                 <aside>
                     <ul>
                         <li>

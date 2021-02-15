@@ -6,10 +6,10 @@
     <h1 class="text-2xl font-bold mb-8">Lecciones</h1>
 
     @foreach($course->sections as $item)
-        <article class="bg-gray-50 hover:bg-gray-100 rounded shadow mb-3">
+        <article class="bg-gray-50 rounded shadow mb-3">
             @if ($section->id == $item->id)
                 {{-- edit section --}}
-                <header class="flex justify-between items-center px-4 py-3 cursor-pointer" role="button">
+                <header class="flex justify-between items-center hover:bg-gray-100 px-4 py-3 cursor-pointer" role="button">
                     <form class="flex-1" wire:submit.prevent="update">
                         <input wire:model="section.name" type="text" class="form-input @if($errors->has('section.name')) invalid @endif" placeholder="Escribir...">
                         @error('section.name')
@@ -19,7 +19,7 @@
                 </header>
             @else
                 {{-- show section --}}
-                <header class="flex justify-between items-center px-4 py-3 cursor-pointer" role="button">
+                <header class="flex justify-between items-center hover:bg-gray-100 px-4 py-3 cursor-pointer" role="button">
                     <h1><b>Sección:</b> {{ $item->name }}</h1>
                     <div class="flex-shrink-0 select-none ml-4">
                         <button wire:click="edit({{ $item }})" class="p-1 text-gray-400 rounded hover:text-blue-500 focus:text-blue-500 focus:ring-2 ring-blue-300 focus:outline-none" type="button">
@@ -34,6 +34,10 @@
                         </button>
                     </div>
                 </header>
+
+                <div>
+                    @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
+                </div>
             @endif
         </article>
     @endforeach
@@ -41,7 +45,7 @@
     {{-- add new section --}}
     <div class="mt-4" x-data="{open: false}">
         <div class="text-center mb-3">
-            <button class="btn btn-green" type="button" x-on:click="open = true" x-show="!open">
+            <button class="btn btn-green" type="button" @click="open = true; if (open) $nextTick(()=>{ $refs.nameInput.focus() });" x-show="!open">
                 <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                 </svg> Agregar nueva sección
@@ -51,14 +55,14 @@
             <h1 class="text-lg font-bold mb-3">Nueva sección</h1>
             <div class="flex flex-wrap gap-2 mb-3">
                 <div class="flex-1">
-                    <input wire:model="name" type="text" class="form-input @if($errors->has('name')) invalid @endif" placeholder="Nombre de la sección">
+                    <input wire:model="name" x-ref="nameInput" type="text" class="form-input @if($errors->has('name')) invalid @endif" placeholder="Nombre de la sección">
                     @error('name')
                         <b class="block text-xs text-red-500 mt-1">{{ $message }}</b>
                     @enderror
                 </div>
                 <div>
                     <div class="flex gap-2">
-                        <button class="btn" x-on:click="open = false" wire:click="resetName">Cancelar</button>
+                        <button class="btn" @click="open = false" wire:click="resetName">Cancelar</button>
                         <button class="btn btn-blue" wire:click="store">Guardar</button>
                     </div>
                 </div>
