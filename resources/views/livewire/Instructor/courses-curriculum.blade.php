@@ -5,7 +5,7 @@
 
     <h1 class="text-2xl font-bold mb-8">Lecciones</h1>
 
-    @foreach($course->sections as $item)
+    @forelse($course->sections as $item)
         <article class="bg-gray-50 rounded shadow mb-4" x-data="{open: false}">
             @if ($section->id == $item->id)
                 {{-- edit section --}}
@@ -42,7 +42,11 @@
                 </div>
             @endif
         </article>
-    @endforeach
+    @empty
+    <div class="text-center">
+        Este curso aun no tiene lecciones.
+    </div>
+    @endforelse
 
     {{-- add new section --}}
     <div class="mt-4" x-data="{open: false}">
