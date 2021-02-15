@@ -6,7 +6,7 @@
     <h1 class="text-2xl font-bold mb-8">Lecciones</h1>
 
     @foreach($course->sections as $item)
-        <article class="bg-gray-50 rounded shadow mb-3">
+        <article class="bg-gray-50 rounded shadow mb-4" x-data="{open: false}">
             @if ($section->id == $item->id)
                 {{-- edit section --}}
                 <header class="flex justify-between items-center hover:bg-gray-100 px-4 py-3 cursor-pointer" role="button">
@@ -19,8 +19,10 @@
                 </header>
             @else
                 {{-- show section --}}
-                <header class="flex justify-between items-center hover:bg-gray-100 px-4 py-3 cursor-pointer" role="button">
-                    <h1><b>Sección:</b> {{ $item->name }}</h1>
+                <div class="flex justify-between items-center">
+                    <button @click="open = !open" type="button" class="flex-1 text-left hover:bg-gray-100 rounded px-4 py-3 cursor-pointer focus:outline-none focus:ring-2 ring-gray-300">
+                        <h1><b>{{ $item->name }}</b></h1>
+                    </button>
                     <div class="flex-shrink-0 select-none ml-4">
                         <button wire:click="edit({{ $item }})" class="p-1 text-gray-400 rounded hover:text-blue-500 focus:text-blue-500 focus:ring-2 ring-blue-300 focus:outline-none" type="button">
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,9 +35,9 @@
                             </svg>
                         </button>
                     </div>
-                </header>
+                </div>
 
-                <div>
+                <div x-show="open">
                     @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
                 </div>
             @endif

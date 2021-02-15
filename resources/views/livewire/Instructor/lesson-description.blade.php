@@ -3,7 +3,7 @@
         <header>
             <button @click="open = !open; if (open) $nextTick(()=>{ $refs.descTextarea.focus() });" class="block w-full text-left py-2 px-3 rounded focus:ring-2 focus:ring-gray-300 focus:outline-none">Descripción de la lección</button>
         </header>
-        <div class="py-2 px-3" x-show="open">
+        <div class="py-2 px-3 border-t border-gray-200" x-show="open">
             @if ($lesson->description)
                 <form wire:submit.prevent="update" class="flex flex-col md:flex-row md:gap-3">
                     <div class="flex-1">

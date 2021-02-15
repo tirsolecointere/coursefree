@@ -1,8 +1,8 @@
 <div class="px-4 py-3">
-    @foreach ($section->lessons as $item)
-        <article class="bg-white shadow rounded py-2 px-3 mb-1">
+    @forelse ($section->lessons as $item)
+        <article class="bg-white shadow rounded mb-1" x-data="{open: false}">
             @if ($lesson->id == $item->id)
-                <form wire:submit.prevent="update">
+                <form wire:submit.prevent="update" class="py-2 px-3">
                     <div class="grid grid-col-1 md:grid-cols-6 items-center md:gap-3 mb-2">
                         <label for="edit-lesson-name-{{ $section->id }}">Nombre</label>
                         <div class="md:col-span-5">
@@ -40,19 +40,21 @@
                     </div>
                 </form>
             @else
-                <header class="flex justify-between items-center">
-                    <div>
-                        <svg class="inline w-5 h-5 text-gray-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <header>
+                    <button @click="open = !open" class="flex justify-between items-center w-full text-left py-2 px-3 rounded focus:ring-2 focus:ring-gray-300 focus:outline-none">
+                        <div>
+                            <svg class="inline w-5 h-5 text-gray-400 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {{ $item->name }}
+                        </div>
+                        <svg class="inline h-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                        {{ $item->name }}
-                    </div>
-                    <svg class="inline h-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
+                    </button>
                 </header>
-                <div class="pt-3">
+                <div class="py-2 px-3 border-t border-gray-100" x-show="open">
                     <ul>
                         <li><b>Plataforma:</b> {{ $item->platform->name }}</li>
                         <li><b>Enlace:</b> <a href="{{ $item->url }}" class="text-gray-400 underline" target="_blank">{{ $item->url }}</a></li>
@@ -62,14 +64,21 @@
                         <button wire:click="destroy({{ $item }})" class="btn btn-red" type="button">Eliminar</button>
                     </div>
 
-                    <div>
-                        @livewire('instructor.lesson-description', ['lesson' => $item], key($item->id))
+                    <div class="mb-3">
+                        @livewire('instructor.lesson-description', ['lesson' => $item], key('lesson-description' . $item->id))
+                    </div>
+                    <div class="mb-3">
+                        @livewire('instructor.lesson-resource', ['lesson' => $item], key('lesson-resource' . $item->id))
                     </div>
                 </div>
             @endif
 
         </article>
-    @endforeach
+    @empty
+        <div class="text-center">
+            Aun no hay lecciones en esta sección
+        </div>
+    @endforelse
 
     {{-- add new lesson --}}
     <div class="mt-4" x-data="{open: false}">
