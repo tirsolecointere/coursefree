@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="flex justify-end gap-2">
-                <button wire:click="cancel" class="btn">Cancelar</button>
+                <button wire:click="cancel" @click="open = false" type="button" class="btn">Cancelar</button>
                 <button wire:click="store" class="btn btn-blue">Crear</button>
             </div>
         </article>

@@ -73,6 +73,8 @@ class CoursesLesson extends Component
 
     public function cancel() {
         $this->lesson = new Lesson();
+        $this->resetValidation();
+        $this->reset('name', 'platform_id', 'url');
     }
 
     public function destroy(Lesson $lesson) {
