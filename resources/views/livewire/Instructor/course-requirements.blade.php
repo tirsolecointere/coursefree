@@ -1,18 +1,13 @@
-<div>
-    <x-slot name="course">
-        {{ $course->slug }}
-    </x-slot>
+<section>
+    <h1 class="text-2xl font-bold mb-8">Requerimientos</h1>
 
-    <h1 class="text-2xl font-bold mb-8">Lecciones</h1>
-
-    @forelse($course->sections as $item)
-        <article class="bg-gray-50 rounded shadow mb-4" x-data="{open: {{ ($loop->first ? 'true' : 'false') }} }">
-            @if ($section->id == $item->id)
-                {{-- edit section --}}
+    @foreach ($course->requirements as $item)
+        <article class="bg-gray-50 rounded shadow mb-4">
+            @if ($requirement->id == $item->id)
                 <header class="flex justify-between items-center px-4 py-3">
                     <form class="flex-1" wire:submit.prevent="update">
-                        <input wire:model="section.name" type="text" class="form-input @if($errors->has('section.name')) invalid @endif" placeholder="Escribir...">
-                        @error('section.name')
+                        <input wire:model="requirement.name" type="text" class="form-input @if($errors->has('requirement.name')) invalid @endif" placeholder="Escribir...">
+                        @error('requirement.name')
                             <b class="block text-xs text-red-500 mt-1">{{ $message }}</b>
                         @enderror
                     </form>
@@ -20,9 +15,9 @@
             @else
                 {{-- show section --}}
                 <div class="flex justify-between items-center">
-                    <button @click="open = !open" type="button" class="flex-1 text-left hover:bg-gray-100 rounded px-4 py-3 cursor-pointer focus:outline-none focus:ring-2 ring-gray-300">
+                    <div class="flex-1 text-left rounded px-4 py-3">
                         <h1><b>{{ $item->name }}</b></h1>
-                    </button>
+                    </div>
                     <div class="flex-shrink-0 select-none ml-4">
                         <button wire:click="edit({{ $item }})" class="p-1 text-gray-400 rounded hover:text-blue-500 focus:text-blue-500 focus:ring-2 ring-blue-300 focus:outline-none" type="button">
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,43 +31,35 @@
                         </button>
                     </div>
                 </div>
-
-                <div x-show="open">
-                    @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
-                </div>
             @endif
         </article>
-    @empty
-    <div class="text-center">
-        Este curso aun no tiene lecciones.
-    </div>
-    @endforelse
+    @endforeach
 
-    {{-- add new section --}}
+    {{-- add new requirement --}}
     <div class="mt-4" x-data="{open: false}">
         <div class="text-center mb-3">
             <button class="btn btn-green" type="button" @click="open = true; if (open) $nextTick(()=>{ $refs.nameInput.focus() });" x-show="!open">
                 <svg class="inline w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                </svg> Agregar nueva sección
+                </svg> Agregar nuevo requerimiento
             </button>
         </div>
         <article class="bg-gray-50 rounded shadow px-4 py-3 mb-3" x-show="open">
-            <h1 class="text-lg font-bold mb-3">Nueva sección</h1>
-            <div class="flex flex-wrap gap-2 mb-3">
+            <h1 class="text-lg font-bold mb-3">Nueva requerimiento</h1>
+            <form wire:submit.prevent="store" class="flex flex-wrap gap-2 mb-3">
                 <div class="flex-1">
-                    <input wire:model="name" x-ref="nameInput" type="text" class="form-input @if($errors->has('name')) invalid @endif" placeholder="Nombre de la sección">
+                    <input wire:model="name" x-ref="nameInput" type="text" class="form-input @if($errors->has('name')) invalid @endif" placeholder="Nombre de la meta">
                     @error('name')
                         <b class="block text-xs text-red-500 mt-1">{{ $message }}</b>
                     @enderror
                 </div>
                 <div>
                     <div class="flex gap-2">
-                        <button class="btn" @click="open = false" wire:click="resetName">Cancelar</button>
-                        <button class="btn btn-blue" wire:click="store">Guardar</button>
+                        <button class="btn" @click="open = false" wire:click="cancel" type="button">Cancelar</button>
+                        <button class="btn btn-blue" type="submit">Guardar</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </article>
     </div>
-</div>
+</section>
