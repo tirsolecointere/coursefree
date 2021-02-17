@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class InstructorLayout extends Component
 {
+    public $course;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($course)
     {
-        //
+        $this->course = $course;
     }
 
     /**

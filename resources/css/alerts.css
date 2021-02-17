@@ -1,0 +1,17 @@
+.alert {
+    @apply flex items-center rounded leading-tight p-3 bg-gray-200 text-gray-800;
+}
+.alert.alert-green {
+    @apply bg-green-200 text-green-800;
+}
+.alert.alert-yellow {
+    @apply bg-yellow-200 text-yellow-800;
+}
+.alert.alert-red {
+    @apply bg-red-200 text-red-800;
+}
+
+/* icon */
+.alert-icon {
+    @apply h-6 w-6;
+}

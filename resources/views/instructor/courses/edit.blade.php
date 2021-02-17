@@ -1,8 +1,4 @@
-<x-instructor-layout>
-
-    <x-slot name="course">
-        {{ $course->slug }}
-    </x-slot>
+<x-instructor-layout :course="$course">
 
     <h1 class="text-2xl font-bold mb-8">Información del curso</h1>
 
