@@ -261,6 +261,13 @@ return [
             'active'        =>  ['admin/categories*'],
             'can'           => 'Ver dashboard',
         ],
+        [
+            'text'          => 'Niveles',
+            'route'         => 'admin.levels.index',
+            'icon'          => 'fas fa-fw fa-boxes',
+            'active'        =>  ['admin/levels*'],
+            'can'           => 'Ver dashboard',
+        ],
 
         // topnav links
         [
