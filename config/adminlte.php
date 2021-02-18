@@ -85,7 +85,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
 
@@ -253,6 +253,29 @@ return [
             'icon'          => 'fas fa-fw fa-user',
             'active'        =>  ['admin/users*'],
             'can'           => 'Ver usuarios',
+        ],
+        [
+            'text'          => 'Ir al sitio',
+            'route'         => 'home',
+            'icon'          => 'fas fa-fw fa-home',
+            'topnav'        => true,
+        ],
+        [
+            'text'          => 'Cursos por aprobar',
+            'route'         => 'admin.courses.index',
+            // 'icon'          => 'fas fa-fw fa-book',
+            'active'        =>  ['admin/courses*'],
+            'can'           => 'Ver cursos',
+            'label'         => '2',
+            'label_color'   => 'danger',
+            'topnav_right'  => true,
+        ],
+        [
+            'text'          => 'Instructor',
+            'route'         => 'instructor.courses.index',
+            // 'icon'          => 'fas fa-fw fa-book',
+            'can'           => 'Ver cursos',
+            'topnav_user'   => true,
         ],
         // ['header' => 'account_settings'],
         // [
