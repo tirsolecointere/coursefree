@@ -116,7 +116,7 @@
             <div class="order-1 lg:order-2">
                 <section class="card text-gray-700 mb-6 lg:mb-12">
                     <div class="card-body">
-                        <div class="flex items-center">
+                        <div class="flex items-center mb-4">
                             <figure class="flex-shrink-0 mr-4">
                                 <img class="h-12 w-12 object-cover rounded-full shadow" src="{{ $course->teacher->profile_photo_url }}" alt="{{ $course->teacher->name }}">
                             </figure>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('admin.courses.approved', $course) }}" class="mt-4" method="POST">
+                        <form action="{{ route('admin.courses.approved', $course) }}" class="mb-2" method="POST">
                             @csrf
                             <button class="btn btn-green btn-block">
                                 Aprobar curso
@@ -135,6 +135,14 @@
                                 </svg>
                             </button>
                         </form>
+
+                        <a href="{{ route('admin.courses.observation', $course) }}" class="btn btn-red btn-block">
+                            Realizar observación
+                            <svg class="inline h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                            </svg>
+                        </a>
                     </div>
                 </section>
             </div>
