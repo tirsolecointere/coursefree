@@ -243,17 +243,26 @@ return [
         [
             'text'          => 'Roles',
             'route'         => 'admin.roles.index',
-            'icon'          => 'fas fa-fw fa-user-cog',
+            'icon'          => 'fas fa-fw fa-user-shield',
             'active'        =>  ['admin/roles*'],
             'can'           => 'Ver roles',
         ],
         [
             'text'          => 'Usuarios',
             'route'         => 'admin.users.index',
-            'icon'          => 'fas fa-fw fa-user',
+            'icon'          => 'fas fa-fw fa-users',
             'active'        =>  ['admin/users*'],
             'can'           => 'Ver usuarios',
         ],
+        [
+            'text'          => 'Categorías',
+            'route'         => 'admin.categories.index',
+            'icon'          => 'fas fa-fw fa-bars',
+            'active'        =>  ['admin/categories*'],
+            'can'           => 'Ver dashboard',
+        ],
+
+        // topnav links
         [
             'text'          => 'Ir al sitio',
             'route'         => 'home',
@@ -263,7 +272,6 @@ return [
         [
             'text'          => 'Cursos por aprobar',
             'route'         => 'admin.courses.index',
-            // 'icon'          => 'fas fa-fw fa-book',
             'active'        =>  ['admin/courses*'],
             'can'           => 'Ver cursos',
             'label'         => '2',
@@ -273,7 +281,6 @@ return [
         [
             'text'          => 'Instructor',
             'route'         => 'instructor.courses.index',
-            // 'icon'          => 'fas fa-fw fa-book',
             'can'           => 'Ver cursos',
             'topnav_user'   => true,
         ],
