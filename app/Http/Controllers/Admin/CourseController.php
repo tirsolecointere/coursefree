@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApprovedCourse;
 
 class CourseController extends Controller
 {
@@ -28,6 +30,11 @@ class CourseController extends Controller
 
         $course->status = 3;
         $course->save();
+
+        // send email
+        $email = new ApprovedCourse($course);
+
+        Mail::to($course->teacher->email)->send($email);
 
         return redirect()->route('admin.courses.index')->with('success', 'El curso se ha publicado con éxito!');
     }
