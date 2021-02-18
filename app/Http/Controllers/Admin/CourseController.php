@@ -34,7 +34,7 @@ class CourseController extends Controller
         // send email
         $email = new ApprovedCourse($course);
 
-        Mail::to($course->teacher->email)->send($email);
+        Mail::to($course->teacher->email)->queue($email);
 
         return redirect()->route('admin.courses.index')->with('success', 'El curso se ha publicado con éxito!');
     }
