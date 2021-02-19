@@ -79,6 +79,12 @@
                     </div>
                 </section>
 
+                <section class="card text-gray-700 mb-6 lg:mb-12">
+                    <div class="card-body">
+                        @livewire('course-review', ['course' => $course])
+                    </div>
+                </section>
+
             </div>
             <div class="order-1 lg:order-2">
                 <section class="card text-gray-700 mb-6 lg:mb-12">
