@@ -170,7 +170,9 @@ class CourseController extends Controller
         $course->status = 2;
         $course->save();
 
-        $course->observation->delete();
+        if ($course->observation) {
+            $course->observation->delete();
+        }
 
         return redirect()->route('instructor.courses.edit', $course);
     }
