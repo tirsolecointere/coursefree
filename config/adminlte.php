@@ -254,10 +254,11 @@ return [
             'active'        =>  ['admin/users*'],
             'can'           => 'Ver usuarios',
         ],
+        ['header' => 'OPCIONES'],
         [
             'text'          => 'Categorías',
             'route'         => 'admin.categories.index',
-            'icon'          => 'fas fa-fw fa-bars',
+            'icon'          => 'fas fa-fw fa-sliders-h',
             'active'        =>  ['admin/categories*'],
             'can'           => 'Ver dashboard',
         ],
@@ -266,6 +267,13 @@ return [
             'route'         => 'admin.levels.index',
             'icon'          => 'fas fa-fw fa-boxes',
             'active'        =>  ['admin/levels*'],
+            'can'           => 'Ver dashboard',
+        ],
+        [
+            'text'          => 'Precios',
+            'route'         => 'admin.prices.index',
+            'icon'          => 'fas fa-fw fa-search-dollar',
+            'active'        =>  ['admin/prices*'],
             'can'           => 'Ver dashboard',
         ],
 
