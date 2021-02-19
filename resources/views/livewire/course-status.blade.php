@@ -10,17 +10,26 @@
                     <p class="text-gray-500">{{ $current->description->name }}</p>
                 @endif
 
-                <div class="cursor-pointer mt-4" wire:click="completed">
-                    @if ($current->completed)
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="inline text-green-500" viewBox="0 0 16 16">
-                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                    </svg>
-                    @else
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="inline text-gray-500" viewBox="0 0 16 16">
-                        <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
-                    </svg>
+                <div class="flex justify-between mt-4">
+                    <div class="cursor-pointer" wire:click="completed">
+                        @if ($current->completed)
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="inline text-green-500" viewBox="0 0 16 16">
+                            <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                        </svg>
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="inline text-gray-500" viewBox="0 0 16 16">
+                            <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+                        </svg>
+                        @endif
+                        Marcar unidad como culminada
+                    </div>
+                    @if ($current->resource)
+                        <button class="btn" wire:click="download">
+                            <svg class="inline h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd" />
+                            </svg> Descargar recurso
+                        </button>
                     @endif
-                    Marcar unidad como culminada
                 </div>
 
                 <div class="flex justify-between items-center mt-5">
